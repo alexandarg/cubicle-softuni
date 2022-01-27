@@ -1,0 +1,28 @@
+{
+  "name": "cubicle-softuni",
+  "version": "1.0.0",
+  "description": "\"Cubicle\" is a place, where you can browse some of the most popular Rubik cubes in the world and add some new cubes that you have discovered.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexandarg/cubicle-softuni.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexandarg/cubicle-softuni/issues"
+  },
+  "homepage": "https://github.com/alexandarg/cubicle-softuni#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "uniqid": "^5.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
