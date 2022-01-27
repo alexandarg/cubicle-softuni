@@ -20,9 +20,12 @@ const create = (name, description, imageUrl, difficulty) => {
     return fs.writeFile('./src/config/database.json', result);
 };
 
+const getById = (id) => database.cubes.find(x => x.id == id);
+
 const cubeServices = {
     getAll,
     create,
+    getById,
 }
 
 module.exports = cubeServices;
