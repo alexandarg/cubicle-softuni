@@ -10,5 +10,8 @@ router.use('/cube', cubeController);
 router.use('/about', (req, res) => {
     res.render('about');
 })
+router.use('*', (req, res) => {
+    res.render('404');
+})
 
 module.exports = router;
