@@ -1,10 +1,18 @@
 {
   "cubes": [
     {
-      "name": "hjhjhj",
-      "description": "hjhjhj",
-      "imageUrl": "hjhjhj",
-      "difficulty": "1"
+      "id": "3kv44sbb44kyx6gjwk",
+      "name": "Mirror Cube",
+      "description": " Mirror Cube is a revolutionary mirror cube. It has much better performance and quality than other cubes. Right out of the box ",
+      "imageUrl": "https://m.media-amazon.com/images/I/61xKF56d15L._SL1000_.jpg",
+      "difficulty": "4"
+    },
+    {
+      "id": "3kv44sbbq4kyx6jrhz",
+      "name": "Rubik's Cube 3X3",
+      "description": "The world's best known puzzle. 43 quintillion combinations. 43 quintillion combinations but only 1 solution",
+      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bb/Rubiks_cube_by_keqs.jpg",
+      "difficulty": "3"
     }
   ]
 }

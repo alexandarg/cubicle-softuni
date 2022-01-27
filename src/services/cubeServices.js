@@ -16,7 +16,6 @@ const create = (name, description, imageUrl, difficulty) => {
     database.cubes.push(cube);
 
     const result = JSON.stringify(database, '', 2);
-    console.log(result);
 
     return fs.writeFile('./src/config/database.json', result);
 };
