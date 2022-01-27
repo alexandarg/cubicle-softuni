@@ -1,6 +1,6 @@
 const env = process.env.NODE_ENV || 'development';
 
-const config = require('./config/confing')[env];
+const config = require('./config/config')[env];
 const app = require('express')();
 
 app.all('/', (req, res) => {
