@@ -7,5 +7,8 @@ const router = express.Router();
 
 router.use(homeController);
 router.use('/cube', cubeController);
+router.use('/about', (req, res) => {
+    res.render('about');
+})
 
 module.exports = router;
