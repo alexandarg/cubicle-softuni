@@ -1,12 +1,17 @@
 <main>
-  <h1>Browser</h1>
+    {{#if title}}
+      <h1>SEARCH</h1>
+    {{else}}
+      <h1>BROWSE</h1>
+    {{/if}}
   <form action="/search" method="GET">
-    <input type="text" class="search" name="search" placeholder="Search..." />
+    <input type="text" class="search" name="search" placeholder="Search..." value="{{search}}"/>
     <input
       type="number"
       name="from"
       class="difficulty"
       placeholder="Difficulty from..."
+      value="{{from}}"
     />
     <span>-</span>
     <input
@@ -14,6 +19,7 @@
       name="to"
       class="difficulty"
       placeholder="Difficulty to..."
+      value="{{to}}"
     />
     <input type="submit" value="search" />
   </form>
