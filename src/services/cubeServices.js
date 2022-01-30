@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const database = require('../config/database.json');
+const database = require('../config/database');
 
 const Cube = require('../models/Cube');
 
