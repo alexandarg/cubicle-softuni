@@ -1,29 +1,22 @@
-const fs = require('fs/promises');
-const path = require('path');
-
-const database = require('../config/database');
-
 const Cube = require('../models/Cube');
 
 
-const getAll = () => {
-    return database.cubes.slice()
-};
+const getAll = () => Cube.find({}).lean();
+
+const getById = (id) => Cube.findById(id).lean();
 
 const create = (name, description, imageUrl, difficulty) => {
-    let cube = new Cube(name, description, imageUrl, difficulty);
+    return Cube.create({
+        name,
+        description,
+        imageUrl,
+        difficulty,
+    });
+}
 
-    database.cubes.push(cube);
-
-    const result = JSON.stringify(database, '', 2);
-
-    return fs.writeFile('./src/config/database.json', result);
-};
-
-const getById = (id) => database.cubes.find(x => x.id == id);
 
 const search = (text, from, to) => {
-    let result = database.cubes.slice();
+    let result = getAll();
 
     if (text) {
         result = result.filter(x => x.name.toLocaleLowerCase().includes(text.toLocaleLowerCase()))

@@ -4,16 +4,16 @@ const cubeServices = require('../services/cubeServices');
 
 const router = express.Router();
 
-const renderHome = (req, res) => {
-    const cubes = cubeServices.getAll();
+const renderHome = async (req, res) => {
+    const cubes = await cubeServices.getAll();
 
     res.render('index', { cubes });
 }
 
-const searchCube = (req, res) => {
+const searchCube = async (req, res) => {
     const { search, from, to } = req.query;
 
-    const cubes = cubeServices.search(search, from, to);
+    const cubes = await cubeServices.search(search, from, to);
 
     res.render('index', { 
         title: "SEARCH",

@@ -22,8 +22,9 @@ const createCube = (req, res) => {
     res.redirect('/');
 }
 
-const getCubeDetails = (req, res) => {
-    const cube = cubeServices.getById(req.params.cubeId);
+const getCubeDetails = async (req, res) => {
+    const cube = await cubeServices.getById(req.params.cubeId);
+    
     res.render('details', { ...cube });
 }
 
