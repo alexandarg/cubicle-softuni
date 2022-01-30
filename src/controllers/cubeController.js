@@ -12,11 +12,15 @@ const createCube = async (req, res) => {
     const { name, description, imageUrl, difficulty } = req.body;
 
     try {
-        cubeServices.create(name, description, imageUrl, difficulty);
+        await cubeServices.create(name, description, imageUrl, difficulty);
+
         console.log(`${name} with difficulty level ${difficulty} was added to the database successfully`);
+
         res.redirect('/');
     } catch (error) {
-        
+        res.status(400)
+        res.send(error.message)
+        res.end();
     }
 
 }
