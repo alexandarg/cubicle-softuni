@@ -5,16 +5,16 @@ const accessorySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+        required: true,
+        maxlength: 200,
+    },
     imageUrl: {
         type: String,
         required: true,
         validate: [/^https?:\/\//i, 'Entered image url is invalid!The url should start with http/https'],
     },
-    description: {
-        type: String,
-        required: true,
-        maxlength: 200,
-    }
 })
 
 const Accessory = mongoose.model('Accessory', accessorySchema);
