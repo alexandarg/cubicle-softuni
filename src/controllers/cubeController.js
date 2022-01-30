@@ -8,23 +8,22 @@ const getCreateCubePage = (req, res) => {
     res.render('create');
 }
 
-const createCube = (req, res) => {
+const createCube = async (req, res) => {
     const { name, description, imageUrl, difficulty } = req.body;
 
-    cubeServices.create(name, description, imageUrl, difficulty)
-        .then(() => {
-            console.log('A new rubic cube has beed added to the database!');
-        })
-        .catch((err) => {
-            console.log('Error:', err);
-        })
+    try {
+        cubeServices.create(name, description, imageUrl, difficulty);
+        console.log(`${name} with difficulty level ${difficulty} was added to the database successfully`);
+        res.redirect('/');
+    } catch (error) {
+        
+    }
 
-    res.redirect('/');
 }
 
 const getCubeDetails = async (req, res) => {
     const cube = await cubeServices.getById(req.params.cubeId);
-    
+
     res.render('details', { ...cube });
 }
 
