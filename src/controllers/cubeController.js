@@ -4,10 +4,6 @@ const cubeServices = require('../services/cubeServices');
 
 const router = express.Router();
 
-const getCreateCubePage = (req, res) => {
-    res.render('cube/create');
-}
-
 const createCube = async (req, res) => {
     const { name, description, imageUrl, difficulty } = req.body;
 
@@ -31,7 +27,7 @@ const getCubeDetails = async (req, res) => {
     res.render('cube/details', { ...cube });
 }
 
-router.get('/create', getCreateCubePage);
+router.get('/create', (req, res) => res.render('cube/create'));
 router.post('/create', createCube);
 router.get('/:cubeId', getCubeDetails)
 
