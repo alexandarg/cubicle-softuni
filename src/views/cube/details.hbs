@@ -9,16 +9,16 @@
   </div>
   <h2>Accessories</h2>
   <div class="accessories">
-    {{#each accessories}}
-      <div class="accessory">
-        <img
-          src="{{imageUrl}}"
-          alt="{{name}}"
-        />
-        <h3>{{name}}</h3>
-        <p>{{description}}</p>
-      </div>
-    {{/each}}
-    <h3 class="italic">This cube has no accessories yet...</h3>
+    {{#if accessories}}
+      {{#each accessories}}
+        <div class="accessory">
+          <img src="{{imageUrl}}" alt="{{name}}" />
+          <h3>{{name}}</h3>
+          <p>{{description}}</p>
+        </div>
+      {{/each}}
+    {{else}}
+      <h3 class="italic">This cube has no accessories yet...</h3>
+    {{/if}}
   </div>
 </main>

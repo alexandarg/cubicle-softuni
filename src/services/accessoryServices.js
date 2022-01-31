@@ -12,10 +12,15 @@ const create = (name, description, imageUrl) => {
     })
 }
 
+const getRemaining = (accessoryIds) => {
+    return Accessory.find({_id: {$nin: accessoryIds}}).lean();
+}
+
 const accessoryServices = {
     getAll,
     getById,
-    create
+    create,
+    getRemaining,
 }
 
 module.exports = accessoryServices;
