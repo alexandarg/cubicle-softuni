@@ -6,6 +6,9 @@
         <form action="/cube/{{_cubeId}}/accessory/add" method="POST">
             <label for="accessory">Accessories</label>
             <select id="accessory" name="accessory" />
+            {{#each accessories}}
+                <option value="{{this.name}}">{{this.name}}</option>
+            {{/each}}
             <option value="Accessory 1">Accessory 1</option>
             <option value="Accessory 2">Accessory 2</option>
             <option value="Accessory 3">Accessory 3</option>
