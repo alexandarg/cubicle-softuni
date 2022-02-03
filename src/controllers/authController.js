@@ -8,7 +8,7 @@ router.get('/register', (req, res) => {
 
 router.post('/register', (req, res) => {
     try {
-        const {username, password, repeatPassword} = req.body;
+        const { username, password, repeatPassword } = req.body;
 
         authServices.register(username, password, repeatPassword);
 
@@ -20,7 +20,19 @@ router.post('/register', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-    res.render('auth/login'); 
+    res.render('auth/login');
+});
+
+router.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await authServices.login(username, password);
+
+    if (!user) {
+        res.redirect('/404');
+    }
+
+    res.redirect('/');
 });
 
 module.exports = router;
