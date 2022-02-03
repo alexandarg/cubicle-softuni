@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const { SECRET } = require('../constants');
+const { jwtSign } = require('../utils/jwtSign');
 
 const register = (username, password, rePass) => User.create({username, password });
 
@@ -15,10 +17,20 @@ const login = (username, password) => {
         .catch(() => null);
 }
 
+const createToken = (user) => {
+    let payload = {
+        _id: user._id,
+        username: user.username,
+    }
+
+    console.log('Secret: ', SECRET);
+    return jwtSign(payload, SECRET);
+}
 
 const authServices = {
     register,
     login,
+    createToken,
 }
 
 module.exports = authServices;
