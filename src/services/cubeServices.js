@@ -15,6 +15,18 @@ const create = (name, description, imageUrl, difficulty) => {
     });
 }
 
+const update = (cubeId, cube) => Cube.findByIdAndUpdate(cubeId, cube, { runValidators: true });
+
+const deleteById = (cubeId) => Cube.findByIdAndDelete(cubeId); 
+
+const attachAccessory = async (cubeId, accessoryId) => {
+    const cube = await Cube.findById(cubeId);
+    const accessory = await Accessory.findById(accessoryId);
+    
+    cube.accessories.push(accessory);
+    
+    return cube.save();
+}
 
 const search = (text, from, to) => {
     let result = getAll();
@@ -33,25 +45,14 @@ const search = (text, from, to) => {
 
     return result
 }
-
-const attachAccessory = async (cubeId, accessoryId) => {
-    const cube = await Cube.findById(cubeId);
-    const accessory = await Accessory.findById(accessoryId);
-
-    cube.accessories.push(accessory);
-
-    return cube.save();
-}
-
-const update = (cubeId, cube) => Cube.findByIdAndUpdate(cubeId, cube, { runValidators: true });
-
 const cubeServices = {
     getAll,
     getById,
     create,
-    search,
-    attachAccessory,
     update,
+    deleteById,
+    attachAccessory,
+    search,
 }
 
 module.exports = cubeServices;
