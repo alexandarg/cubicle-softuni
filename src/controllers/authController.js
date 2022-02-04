@@ -7,16 +7,18 @@ router.get('/register', (req, res) => {
     res.render('auth/register')
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         const { username, password, repeatPassword } = req.body;
 
-        authServices.register(username, password, repeatPassword);
+        await authServices.register(username, password, repeatPassword);
 
         res.redirect('/auth/login');
     } catch (error) {
-        console.log(error);
-        res.status(400).send(error);
+        const errors = Object.keys(error.errors).map(x => error.errors[x].message);
+
+        res.locals.errors = errors;
+        res.status(400).render('auth/register',);
     }
 });
 
