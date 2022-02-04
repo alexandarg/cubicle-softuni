@@ -31,7 +31,9 @@ const createCube = async (req, res) => {
 const cubeDetails = async (req, res) => {
     const cube = await cubeServices.getById(req.params.cubeId);
 
-    res.render('cube/details', { ...cube });
+    const isOwn = cube.creator == req.user._id;
+
+    res.render('cube/details', { ...cube, isOwn });
 }
 
 const getEditCubePage = async (req, res) => {
