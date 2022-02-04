@@ -5,12 +5,16 @@ const express = require('express');
 const initHandlebars = require('./config/handlebars');
 const initDatabase = require('./config/database');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const routes = require('./config/routes');
+const { auth }  = require('./middlewares/authMiddleware');
 
 const app = express();
-initHandlebars(app);
 
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
+app.use(auth);
+initHandlebars(app);
 app.use(express.static(path.resolve(__dirname, './public')));
 app.use(routes);
 
