@@ -43,12 +43,15 @@ const attachAccessory = async (cubeId, accessoryId) => {
     return cube.save();
 }
 
+const update = (cubeId, cube) => Cube.findByIdAndUpdate(cubeId, cube, { runValidators: true });
+
 const cubeServices = {
     getAll,
-    create,
     getById,
+    create,
     search,
     attachAccessory,
+    update,
 }
 
 module.exports = cubeServices;
