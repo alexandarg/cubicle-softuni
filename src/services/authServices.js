@@ -2,7 +2,7 @@ const User = require('../models/User');
 const { SECRET } = require('../constants');
 const { jwtSign } = require('../utils/jwtSign');
 
-const register = (username, password, rePass) => User.create({username, password });
+const register = (username, password, repeatPassword) => User.create({username, password, repeatPassword });
 
 const login = (username, password) => {
     return User.findOne({username})
