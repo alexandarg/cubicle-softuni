@@ -6,12 +6,13 @@ const getAll = () => Cube.find({}).lean();
 
 const getById = (id) => Cube.findById(id).populate('accessories').lean();
 
-const create = (name, description, imageUrl, difficulty) => {
+const create = (name, description, imageUrl, difficulty, userId) => {
     return Cube.create({
         name,
         description,
         imageUrl,
         difficulty,
+        creator: userId,
     });
 }
 
